@@ -1,4 +1,4 @@
-Zugriff verweigert oder System Error 5
-Die ausgegebene Fehlermeldung hilft - wie so häufig - nicht weiter. So meldet im Windows-Explorer der Dialog Windows-Sicherheit lapidar Der Zugriff wird verweigert. Wer über die mit Admin-Rechten aufgerufene Befehlszeile ein Mapping der administrativen Freigaben per net use probiert, wird mit Systemfehler 5 abgespeist.
+Registry für administrative Freigaben anpassen
+Demnach müssen Sie auf dem Rechner, auf dessen administrative Freigaben Sie zugreifen wollen, die Registry anpassen. Starten Sie dazu als Erstes den Registry-Editor über den Ausführen-Dialog und den Befehl regedit.exe. Die anschließende Rückfrage der Benutzerkontensteuerung nicken Sie mit einem Klick auf die Schaltfläche Ja ab.
 
-Immerhin lässt sich mit den Begriffen System Error 5 und Access denied eine Suche in der Microsoft-Knowledge-Base starten, um die potenzielle Fehlerursache einzugrenzen. Ein Support-Dokument mit der Nummer 947232 verrät, dass es sich um das Standardverhalten seit Vista handelt. Der Eintrag nennt zudem eine Lösungsmöglichkeit.
+Wechseln Sie nun zum Zweig HKEY_LOCAL_MACHINE und hangeln sich dann weiter bis zu SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System. In diesem Subkey erstellen Sie per Rechtsklick ein neues DWORD und vergeben dafür den Namen LocalAccountTokenFilterPolicy. Dessen Wert ändern Sie anschließend von 0 in 1. Zum Schluss speichern Sie die vorgenommenen Änderungen.
